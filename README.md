@@ -380,9 +380,9 @@ Go to `/index.html` and fill your information, there are 6 sections:
 
   - `.projects__row-content-title` is where you need to add your Project title.
   - `.projects__row-content-desc` is where you need to add a short 2-3 lines description of your project. As there's going to be a separate page for each project so there you can add all the details for each project on the specific project page.
-  - The Anchor tag ( **Case Study** button) on press will take you to the details page for each project ( For example: If you click the **Case Study** button of Project 1 then it will take you to the `project-1.html` file where you will have all the details about that particular project).
+- The Anchor tag ( **Case Study** button) on press will take you to the details page for each project ( For example: If you click the **Case Study** button of Project 1 then it will take you to the `pages/project-1.html` file where you will have all the details about that particular project).
 
-Currently, I have already added a separate for each project ( considering there are 3 projects ) the file names are `project-1.html`, `project-2.html`, and `project-3.html`. They all contain the same code only the project title, description and image will change. If you like to add more projects then you can just create a new file for it and paste the same code that we have in `project-1.html` as the code is going to be the same and the only thing that you need to change is the data inside each project.
+Currently, I have already added a separate page for each project (the files live in `pages/`). The file names are `pages/project-1.html` and `pages/project-2.html`. They all contain the same code; only the project title, description and image will change. If you like to add more projects then you can just create a new file in `pages/` and paste the same code that we have in `pages/project-1.html` as the code is going to be the same and the only thing that you need to change is the data inside each project.
 
 ```html
 <!-- **** Projects Section of Homepage **** -->
@@ -413,7 +413,7 @@ Currently, I have already added a separate for each project ( considering there 
             tempora, explicabo quae quod deserunt eius sapiente praesentium.
           </p>
           <a
-            href="./project-1.html"
+            href="./pages/project-1.html"
             class="btn btn--med btn--theme dynamicBgClr"
             target="_blank"
             >Case Study</a
@@ -436,30 +436,7 @@ Currently, I have already added a separate for each project ( considering there 
             tempora, explicabo quae quod deserunt eius sapiente praesentium.
           </p>
           <a
-            href="./project-2.html"
-            class="btn btn--med btn--theme dynamicBgClr"
-            target="_blank"
-            >Case Study</a
-          >
-        </div>
-      </div>
-      <div class="projects__row">
-        <div class="projects__row-img-cont">
-          <img
-            src="./assets/jpeg/project-mockup-example.jpeg"
-            alt="Software Screenshot"
-            class="projects__row-img"
-            loading="lazy"
-          />
-        </div>
-        <div class="projects__row-content">
-          <h3 class="projects__row-content-title">Project 3</h3>
-          <p class="projects__row-content-desc">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic facilis
-            tempora, explicabo quae quod deserunt eius sapiente praesentium.
-          </p>
-          <a
-            href="./project-3.html"
+            href="./pages/project-2.html"
             class="btn btn--med btn--theme dynamicBgClr"
             target="_blank"
             >Case Study</a
