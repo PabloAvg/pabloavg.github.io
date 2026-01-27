@@ -295,21 +295,53 @@ function highlightFilter(filter) {
                  font-size: 12px;
                  cursor: pointer;
              }
-             .graph-legend {
-                 padding: 10px 12px;
-                 border-bottom: 1px solid #2a2a2a;
-                 background: #202020;
-                 font-family: Arial, sans-serif;
+             .help-btn {
+                 border: 1px solid #3a3a3a;
+                 background: #2a2a2a;
                  color: #e6e6e6;
+                 padding: 4px 10px;
                  font-size: 12px;
-                 line-height: 1.4;
+                 cursor: pointer;
              }
-             .graph-legend ul {
-                 margin: 6px 0 0 16px;
+             .help-overlay {
+                 display: none;
+                 position: fixed;
+                 inset: 0;
+                 background: rgba(0,0,0,0.6);
+                 z-index: 9999;
+                 align-items: center;
+                 justify-content: center;
+             }
+             .help-modal {
+                 width: min(680px, 92vw);
+                 background: #1f1f1f;
+                 border: 1px solid #2a2a2a;
+                 border-radius: 8px;
+                 padding: 14px 16px;
+                 color: #e6e6e6;
+                 font-family: Arial, sans-serif;
+                 font-size: 13px;
+                 line-height: 1.4;
+                 box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+             }
+             .help-modal h4 {
+                 margin: 0 0 6px 0;
+                 font-size: 16px;
+             }
+             .help-modal ul {
+                 margin: 6px 0 0 18px;
                  padding: 0;
              }
-             .graph-legend li {
-                 margin: 2px 0;
+             .help-modal li {
+                 margin: 3px 0;
+             }
+             .help-close {
+                 float: right;
+                 border: none;
+                 background: transparent;
+                 color: #e6e6e6;
+                 font-size: 16px;
+                 cursor: pointer;
              }
              .graph-layout {
                  display: flex;
@@ -1092,22 +1124,26 @@ var tomSelect=function(e,t){return new TomSelect(e,t)}
             
             <div class="graph-controls">
                 <label for="archetypeFilter">Archetype filter</label>
-                <select id="archetypeFilter" placeholder="Todos">
-                    <option value="__all__">Todos</option>
+                <select id="archetypeFilter" placeholder="All">
+                    <option value="__all__">All</option>
                 </select>
                 <button id="resetFilter" class="btn-mini" type="button">Reset</button>
+                <button id="helpBtn" class="help-btn" type="button">Help</button>
                 <span class="hint">Click a node to show only its relations and the table</span>
             </div>
-            <div class="graph-legend">
-                <div><strong>How to read this graph</strong></div>
-                <ul>
-                    <li><strong>Node size</strong> = overall matches played by that deck.</li>
-                    <li><strong>Node color</strong> = overall winrate (red → yellow → green).</li>
-                    <li><strong>Edge direction</strong> = which deck wins the matchup.</li>
-                    <li><strong>Edge color</strong> = winrate (greener = better for the winner, redder = worse).</li>
-                    <li><strong>Edge width</strong> = number of matches (thicker = more data).</li>
-                    <li>When a deck is selected, it moves to the center and all colors/arrows are shown from its point of view.</li>
-                </ul>
+            <div id="helpOverlay" class="help-overlay">
+                <div class="help-modal" role="dialog" aria-modal="true">
+                    <button class="help-close" id="helpClose" aria-label="Close">×</button>
+                    <h4>How to read this graph</h4>
+                    <ul>
+                        <li><strong>Node size</strong> = overall matches played by that deck.</li>
+                        <li><strong>Node color</strong> = overall winrate (red → yellow → green).</li>
+                        <li><strong>Edge direction</strong> = which deck wins the matchup.</li>
+                        <li><strong>Edge color</strong> = winrate (greener = better for the winner, redder = worse).</li>
+                        <li><strong>Edge width</strong> = number of matches (thicker = more data).</li>
+                        <li>When a deck is selected, it moves to the center and all colors/arrows are shown from its point of view.</li>
+                    </ul>
+                </div>
             </div>
     
 
@@ -1193,6 +1229,9 @@ var tomSelect=function(e,t){return new TomSelect(e,t)}
                   var thDeck = document.getElementById('thDeck');
                   var thWinrate = document.getElementById('thWinrate');
                   var thMatches = document.getElementById('thMatches');
+                  var helpBtn = document.getElementById('helpBtn');
+                  var helpOverlay = document.getElementById('helpOverlay');
+                  var helpClose = document.getElementById('helpClose');
 
                   var baseNodeState = {};
                   var baseEdgeState = {};
@@ -1319,7 +1358,7 @@ var tomSelect=function(e,t){return new TomSelect(e,t)}
                       if (window.TomSelect) {
                           tomSelectRef = new TomSelect('#archetypeFilter', {
                               allowEmptyOption: true,
-                              placeholder: 'Todos',
+                              placeholder: 'All',
                               onChange: function(value) {
                                   if (!value || value === '__all__') {
                                       showAll();
@@ -1594,6 +1633,20 @@ var tomSelect=function(e,t){return new TomSelect(e,t)}
                       thDeck.addEventListener('click', function() { setSort('deck'); });
                       thWinrate.addEventListener('click', function() { setSort('winrate'); });
                       thMatches.addEventListener('click', function() { setSort('matches'); });
+                  }
+
+                  if (helpBtn && helpOverlay && helpClose) {
+                      helpBtn.addEventListener('click', function() {
+                          helpOverlay.style.display = 'flex';
+                      });
+                      helpClose.addEventListener('click', function() {
+                          helpOverlay.style.display = 'none';
+                      });
+                      helpOverlay.addEventListener('click', function(ev) {
+                          if (ev.target === helpOverlay) {
+                              helpOverlay.style.display = 'none';
+                          }
+                      });
                   }
 
                   function updateSortSubtitle() {

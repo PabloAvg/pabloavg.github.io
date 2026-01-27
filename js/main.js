@@ -1,4 +1,4 @@
-// ---
+// Mobile navigation toggle
 const hamMenuBtn = document.querySelector('.header__main-ham-menu-cont')
 const smallMenu = document.querySelector('.header__sm-menu')
 const headerHamMenuBtn = document.querySelector('.header__main-ham-menu')
@@ -30,10 +30,10 @@ for (let i = 0; i < headerSmallMenuLinks.length; i++) {
   })
 }
 
-// ---
-const headerLogoConatiner = document.querySelector('.header__logo-container')
+// Logo click returns to home on project pages
+const headerLogoContainer = document.querySelector('.header__logo-container')
 
-headerLogoConatiner.addEventListener('click', () => {
+headerLogoContainer.addEventListener('click', () => {
   const isProjectPage = window.location.pathname.includes('/pages/')
   location.href = isProjectPage ? '../index.html' : 'index.html'
 })
