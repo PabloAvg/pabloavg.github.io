@@ -295,6 +295,22 @@ function highlightFilter(filter) {
                  font-size: 12px;
                  cursor: pointer;
              }
+             .graph-legend {
+                 padding: 10px 12px;
+                 border-bottom: 1px solid #2a2a2a;
+                 background: #202020;
+                 font-family: Arial, sans-serif;
+                 color: #e6e6e6;
+                 font-size: 12px;
+                 line-height: 1.4;
+             }
+             .graph-legend ul {
+                 margin: 6px 0 0 16px;
+                 padding: 0;
+             }
+             .graph-legend li {
+                 margin: 2px 0;
+             }
              .graph-layout {
                  display: flex;
                  gap: 12px;
@@ -1081,6 +1097,17 @@ var tomSelect=function(e,t){return new TomSelect(e,t)}
                 </select>
                 <button id="resetFilter" class="btn-mini" type="button">Reset</button>
                 <span class="hint">Click a node to show only its relations and the table</span>
+            </div>
+            <div class="graph-legend">
+                <div><strong>How to read this graph</strong></div>
+                <ul>
+                    <li><strong>Node size</strong> = overall matches played by that deck.</li>
+                    <li><strong>Node color</strong> = overall winrate (red → yellow → green).</li>
+                    <li><strong>Edge direction</strong> = which deck wins the matchup.</li>
+                    <li><strong>Edge color</strong> = winrate (greener = better for the winner, redder = worse).</li>
+                    <li><strong>Edge width</strong> = number of matches (thicker = more data).</li>
+                    <li>When a deck is selected, it moves to the center and all colors/arrows are shown from its point of view.</li>
+                </ul>
             </div>
     
 
