@@ -95,7 +95,14 @@
           </p>
         </div>
         <div class="project-cs-hero__cta">
-          <a href="../index.html#contact" class="btn btn--bg">Contact for Demo</a>
+          <a
+            href="https://pabloavg.github.io/API_REST_ORDERS/"
+            class="btn btn--bg"
+            target="_blank"
+            rel="noreferrer"
+            >
+              Live Demo
+          </a>
         </div>
       </div>
     </section>
@@ -111,17 +118,18 @@
           </div>
           <div class="project-details__content-main">
             <div class="project-details__desc">
-              <h3 class="project-details__content-title">Project Overview</h3>
+              <h3 class="project-details__content-title">Run it</h3>
+
               <p class="project-details__desc-para">
-                This project simulates a retail workflow: search for products, add them to an
-                order, adjust quantities, and submit the order to a backend API. The UI shows
-                net, VAT (21%), and total values, while the backend persists a consistent snapshot
-                of prices and totals.
+                Live demo: <a href="https://pabloavg.github.io/API_REST_ORDERS/" target="_blank" rel="noreferrer">pabloavg.github.io/API_REST_ORDERS</a>
               </p>
+
               <p class="project-details__desc-para">
-                The backend exposes product and order endpoints, runs on an in-memory H2 database,
-                and includes validation and integration tests. CORS is configured so the Angular
-                frontend can call the API locally.
+                API endpoint: <a href="https://api-rest-orders.onrender.com/api/products" target="_blank" rel="noreferrer">/api/products</a>
+              </p>
+
+              <p class="project-details__desc-para">
+                Local: start the backend with Maven and run the Angular app. Frontend runs on localhost:4200 and the API on localhost:8080.
               </p>
             </div>
             <div class="project-details__tools-used">
@@ -138,22 +146,46 @@
             <div class="project-details__desc">
               <h3 class="project-details__content-title">Local Setup</h3>
               <p class="project-details__desc-para">
-                Start the backend with Maven, then run the Angular frontend. Once both are up,
-                the app is available at localhost:4200 and the API at localhost:8080.
+                The frontend is deployed on GitHub Pages and the backend runs on Render. CORS is configured so the
+                Angular app can call the API both locally and in production.
               </p>
             </div>
             <div class="project-details__links">
               <h3 class="project-details__content-title">Explore</h3>
+
+              <a
+                href="https://pabloavg.github.io/API_REST_ORDERS/"
+                class="btn btn--med btn--theme project-details__links-btn"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Live Demo
+              </a>
+
+              <a
+                href="https://github.com/PabloAvg/API_REST_ORDERS"
+                class="btn btn--med btn--theme-inv project-details__links-btn"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Source Code
+              </a>
+
+              <a
+                href="https://api-rest-orders.onrender.com/api/products"
+                class="btn btn--med btn--theme project-details__links-btn"
+                target="_blank"
+                rel="noreferrer"
+              >
+                API (products)
+              </a>
+
               <a
                 href="../index.html#projects"
-                class="btn btn--med btn--theme project-details__links-btn"
-                >Back to Projects</a
-              >
-              <a
-                href="../index.html#contact"
                 class="btn btn--med btn--theme-inv project-details__links-btn"
-                >Contact</a
               >
+                Back to Projects
+              </a>
             </div>
           </div>
         </div>
